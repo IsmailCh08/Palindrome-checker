@@ -1,0 +1,29 @@
+document.addEventListener("DOMContentLoaded", function() {
+  const inputResult = document.getElementById("text-input");
+  const button = document.getElementById("check-btn");
+  const outputResult = document.getElementById("result");
+
+  function isPalindrome() {
+    const regex = /[^A-Za-z0-9]/g;
+
+
+    if (inputResult.value === "") {
+      alert("Please input a value");
+      return;
+    }
+
+    let clean_value = inputResult.value.replace(regex, "");
+    let upperCaseResult = clean_value.toUpperCase();
+    let splitString = upperCaseResult.split("");
+    let reverseArray = splitString.reverse();
+    let reversedString = reverseArray.join("");
+
+    if (reversedString === upperCaseResult) {
+      outputResult.innerHTML = `${inputResult.value} is a Palindrome`;
+    } else {
+      outputResult.innerHTML = `${inputResult.value} is not a Palindrome`;
+    }
+  }
+
+  button.addEventListener("click", isPalindrome);
+});
